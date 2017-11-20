@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Soundcloud Filter Popup</title>
+    <style type="text/css">
+      body {
+        margin: 10px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      h2 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      h3 {
+        font-size: 14px;
+      }
+
+      input {
+        width: 80px;
+        margin-left: 8px;
+        text-align: right;
+      }
+
+      .slider {
+        width: 100px;
+      }
+
+      #likePercentageText {
+        font-size: 16px;
+        margin-left: 16px;
+      }
+
+      #other {
+        margin-top: 8px;
+      }
+
+      .buttonWrapper {
+        text-align: center;
+      }
+
+      button {
+        margin-top: 16px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <h1>Soundcloud Stream Filter</h1>
+
+    <div class="min">
+      <h2>Min:</h2>
+      <div>
+        Likes:
+        <input id="minLikes" type="text" value="0"/>
+      </div>
+      <div>
+        Plays:
+        <input id="minPlays" type="text" value="0"/>
+      </div>
+    </div>
+
+    <div class="max">
+      <h2>Max:</h2>
+      <div>
+        Likes:
+        <input id="maxLikes" type="text" value="0"/>
+      </div>
+      <div>
+        Plays:
+        <input id="maxPlays" type="text" value="0"/>
+      </div>
+    </div>
+
+    <div class="other">
+      <h3>Min percentage of likes per plays</h3>
+      <div>
+        <input class="slider" id="likePercentageRange" type="range" min="0" max="0.3" step="0.01">
+        <span id="likePercentageText"></span>
+      </div>
+    </div>
+
+    <div class="buttonWrapper">
+      <button id="updateButton" type="button">update</button>
+    </div>
+  </body>
+</html>
